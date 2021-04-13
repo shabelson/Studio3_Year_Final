@@ -20,3 +20,7 @@ d. Please add the external libraries that you use to the readme files.
 ## Requirments ##
 1. OpenMedia - python
 2. openCV - pyton
+
+## Bibliography ##
+
+http://www.ardumotive.com/how-to-use-a-flex-sensor-en.html
