@@ -119,10 +119,10 @@ void SendMsg(Madgwick locFilter){
        
        q0,q1,q2,q3= locFilter.q0,locFilter.q1,locFilter.q2,locFilter.q3;
        
-       MQTT_CLIENT.publish("IMU1/q0",int16ToStr(q0));
-       MQTT_CLIENT.publish("IMU1/q1",int16ToStr(q1));
-       MQTT_CLIENT.publish("IMU1/q2",int16ToStr(q2));
-       MQTT_CLIENT.publish("IMU1/q3",int16ToStr(q3));
+       MQTT_CLIENT.publish("/IMU1/q0",int16ToStr(q0));
+       MQTT_CLIENT.publish("/IMU1/q1",int16ToStr(q1));
+       MQTT_CLIENT.publish("/IMU1/q2",int16ToStr(q2));
+       MQTT_CLIENT.publish("/IMU1/q3",int16ToStr(q3));
     }
 
 
@@ -144,7 +144,7 @@ void Connect(){
     while (!MQTT_CLIENT.connected()){
        MQTT_CLIENT.setClient(esp32client);
        MQTT_CLIENT.setServer(IP,1883);
-       MQTT_CLIENT.connect("esp_master");
+       MQTT_CLIENT.connect("esp_master_wrist");
       Serial.println("MQTT trying to Connect");
       delay(1000);
   }
