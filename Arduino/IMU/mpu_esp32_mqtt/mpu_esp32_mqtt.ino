@@ -4,7 +4,7 @@
 //#include "Esp32MQTTClient.h"
 //#include <WiFiClient.h>
 #include <PubSubClient.h>
-#include "AzureIotHub.h"
+//#include <AzureIotHub.h>
 #include <WiFi.h>
 
 WiFiClient esp32client;
@@ -17,7 +17,11 @@ PubSubClient MQTT_CLIENT;
 const char  IP[] = "10.3.141.1"; //HOME
 const char ssid[] ="Team2_ExZZu";// HOME
 const char pswd[] =  "123456789";// HOME
-
+/*
+const char  IP[] = "10.3.141.1"; //HOME
+const char ssid[] ="Team2_ExZZu";// HOME
+const char pswd[] =  "123456789";// HOME
+*/
 
 
 char tmp_str[7];
