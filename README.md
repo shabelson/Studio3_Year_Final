@@ -20,6 +20,8 @@ d. Please add the external libraries that you use to the readme files.
 ## Requirments ##
 1. OpenMedia - python
 2. openCV - pyton
+3. openNI2 - python
+4. 
 
 ## Bibliography ##
 
