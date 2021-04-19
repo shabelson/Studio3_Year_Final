@@ -2,7 +2,7 @@
 #include "MPU9250_SPI.h"
 #include "MadgwickAHRS.h"
 //#include "Esp32MQTTClient.h"
-//#include <WiFiClient.h>
+#include <WiFiClient.h>
 #include <PubSubClient.h>
 //#include <AzureIotHub.h>
 #include <WiFi.h>
@@ -14,9 +14,9 @@ PubSubClient MQTT_CLIENT;
 //const char ssid[] ="MiFibra-B93B";// HOME
 //const char pswd[] =  "3brRyg9p";// HOME
 
-const char  IP[] = "10.3.141.1"; //HOME
-const char ssid[] ="Team2_ExZZu";// HOME
-const char pswd[] =  "123456789";// HOME
+char  IP[] = "10.3.141.1"; //HOME
+char ssid[] ="Team2_ExZZu";// HOME
+char pswd[] =  "123456789";// HOME
 /*
 const char  IP[] = "10.3.141.1"; //HOME
 const char ssid[] ="Team2_ExZZu";// HOME
@@ -28,15 +28,16 @@ char tmp_str[7];
 static bool hasIoTHub = false;
 
 
+
 #define SPI_CLOCK 8000000  // 8MHz clock works.
-#define SS_PIN1   15
+#define SS_PIN1 15
 Madgwick filter;
 MPU9250 MpuSetup(int spClk,int ssPin)
-
 {
   MPU9250 mpuTemp(SPI_CLOCK, SS_PIN1);
   return mpuTemp;
 }
+MPU9250 mpu1(SPI_CLOCK, SS_PIN1);
 //UTILITIES///
 char* int16ToStr(double i) { 
   sprintf(tmp_str, "%6f", i);
@@ -47,14 +48,13 @@ void WAITFORINPUT(){
     while(!Serial.available()){};  
     while(Serial.available()){     
       Serial.read();             
-    };                             
+    }                             
   }                                  
 
 
 //MPU//
 
 
-  MPU9250 mpu1(SPI_CLOCK, SS_PIN1);
 void MPUSetup()
 {
 
@@ -83,8 +83,7 @@ void MPUSetup()
       Serial.print("Failed connection to mag: ");
       Serial.println(wai_AK89631, HEX);
     }
-    WAITFORINPUT();
-
+    
      mpu1.calib_mag();
     //mpu2.calib_mag();
     //mpu3.calib_mag();
@@ -168,6 +167,7 @@ void Connect(){
 
     
     MPURead(mpu1,mpu1Data);
+    Connect();
     Serial.print(filter.q1);  
     Serial.println();
     delay(10);
