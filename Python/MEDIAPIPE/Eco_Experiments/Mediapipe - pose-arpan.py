@@ -1,6 +1,7 @@
 import mediapipe as mp
 import cv2 as cv
 
+mp.solutions.drawing_utils
 mp_drawing = mp.solutions.drawing_utils
 mp_holistic = mp.solutions.holistic
 mp_drawing.DrawingSpec(color=(0,0,255),thickness= 2,circle_radius=2)
