@@ -11,21 +11,29 @@ rgb_stream = dev.create_color_stream()
 
 rgb_stream.start()
 depth_stream.start()
-depth_stream.set_video_mode(c_api.OniVideoMode(pixelFormat = c_api.OniPixelFormat.ONI_PIXEL_FORMAT_DEPTH_1_MM, resolutionX = 640, resolutionY = 480, fps = 30))
-rgb_stream.set_video_mode(c_api.OniVideoMode(pixelFormat = c_api.OniPixelFormat.ONI_PIXEL_FORMAT_DEPTH_1_MM, resolutionX = 640, resolutionY = 480, fps = 30))
+
+
+#depth_stream.set_video_mode(c_api.OniVideoMode(pixelFormat = c_api.OniPixelFormat.ONI_PIXEL_FORMAT_DEPTH_1_MM, resolutionX = 640, resolutionY = 480, fps = 30))
+rgb_stream.set_video_mode(c_api.OniVideoMode(pixelFormat = c_api.OniPixelFormat.ONI_PIXEL_FORMAT_RGB888, resolutionX = 640, resolutionY = 480, fps = 30))
 
 #dev.set_depth_color_sync_enabled(True)
 print(dev.is_image_registration_mode_supported(c_api.OniImageRegistrationMode.ONI_IMAGE_REGISTRATION_DEPTH_TO_COLOR ))
 print(dev.set_image_registration_mode(c_api.OniImageRegistrationMode.ONI_IMAGE_REGISTRATION_OFF))
 while True:
     
-    frame = depth_stream.read_frame()
-    frame_data = frame.get_buffer_as_uint16()
+    #frame = depth_stream.read_frame()
+    #frame_data = frame.get_buffer_as_uint16()
+    frame2 = rgb_stream.read_frame()
+    frame_data = frame2.get_buffer_as_uint16()
+    
     img = np.frombuffer(frame_data,dtype = np.uint8)
-    img = img.reshape(960,640)
+    img = img.reshape(3,640,480)
     cv2.imshow("1",img)
     print(img.shape)
     cv2.waitKey(34)
+
+
+
 openni2.unload()
 """
 while True:

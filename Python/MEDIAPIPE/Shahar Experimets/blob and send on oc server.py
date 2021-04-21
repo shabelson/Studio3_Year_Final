@@ -209,7 +209,7 @@ while True:
 	# Create a debug image
 	img2 = None
 	if bViewFeed:
-		img2 = cv2.cvtColor(colorPix, cv2.COLOR_GRAY2RGB)
+		img2 = cv2.cvtColor(grayPix, cv2.COLOR_GRAY2RGB)
 		cv2.drawContours(img2, contours, -1, (0,255,0), -1)
 
 	# Get the screen coordinates

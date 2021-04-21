@@ -2,7 +2,7 @@ import cv2
 import mediapipe as mp
 import time
 
-cap = cv2.VideoCapture(0) # Webcam ID
+cap = cv2.VideoCapture(1) # Webcam ID
 # cap.set(3,320)
 # cap.set(4,240)
 

@@ -15,18 +15,18 @@ depth_stream.start()
 depth_stream.set_video_mode(c_api.OniVideoMode(pixelFormat = c_api.OniPixelFormat.ONI_PIXEL_FORMAT_DEPTH_100_UM, resolutionX = 640, resolutionY = 480, fps = 30))
 
 rgb_stream.start()
-#rgb_stream.set_video_mode(c_api.OniVideoMode(pixelFormat = c_api.OniPixelFormat.ONI_PIXEL_FORMAT_DEPTH_100_UM, resolutionX = 640, resolutionY = 480, fps = 30))
-rgb_stream.set_video_mode(c_api.OniVideoMode(pixelFormat = c_api.OniPixelFormat.ONI_PIXEL_FORMAT_RGB888, resolutionX = 640, resolutionY = 480, fps = 30))
+rgb_stream.set_video_mode(c_api.OniVideoMode(pixelFormat = c_api.OniPixelFormat.ONI_PIXEL_FORMAT_DEPTH_100_UM, resolutionX = 640, resolutionY = 480, fps = 30))
+#rgb_stream.set_video_mode(c_api.OniVideoMode(pixelFormat = c_api.OniPixelFormat.ONI_PIXEL_FORMAT_RGB888, resolutionX = 480, resolutionY = 640, fps = 30))
 
 # Function to return some pixel information when the OpenCV window is clicked
 refPt = []
 selecting = False
 
-"""
+
 if (rgb_stream.camera != None):
 	rgb_stream.camera.set_auto_exposure(bAutoExposure)
 	rgb_stream.camera.set_exposure(exposure)
-"""
+
 
 def point_and_shoot(event, x, y, flags, param):
                 global refPt, selecting
@@ -62,7 +62,7 @@ while True:
 
                 frame = rgb_stream.read_frame()
                 frame_data = frame.get_buffer_as_uint16()
-                """
+                
                 colorPix = np.frombuffer(frame_data, dtype=np.uint16)
                 colorPix.shape = (3, 640, 240)
 
@@ -70,7 +70,7 @@ while True:
                 colorPix = np.concatenate((colorPix, colorPix, colorPix), axis=0)
                 colorPix = np.swapaxes(colorPix, 0, 2)
                 colorPix = np.swapaxes(colorPix, 0, 1)
-                """
+                
 
                 if len(refPt) > 1:
                                 img = img.copy()

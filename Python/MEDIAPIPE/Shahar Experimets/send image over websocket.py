@@ -1,4 +1,3 @@
-usr/bin/env python
 
 import random
 import socket, select
@@ -34,10 +33,11 @@ while True:
 
             sockfd, client_address = server_socket.accept()
             connected_clients_sockets.append(sockfd)
+            print (sockfd)
 
         else:
             try:
-                print ' Buffer size is %s' % buffer_size
+                print (' Buffer size is %s' % buffer_size)
                 data = sock.recv(buffer_size)
                 txt = str(data)
 
@@ -45,8 +45,8 @@ while True:
                     tmp = txt.split()
                     size = int(tmp[1])
 
-                    print 'got size'
-                    print 'size is %s' % size
+                    print ('got size')
+                    print ('size is %s' % size)
 
                     sock.send("GOT SIZE")
                     # Now set the buffer size for the image 
