@@ -1,3 +1,4 @@
+__author__ = "Shahar Abelson"
 # Echo client program
 # For Packet explanation see https://s3-eu-west-1.amazonaws.com/ur-support-site/16496/Client_InterfacesV3.14andV5.9.xlsx
 import socket
@@ -114,4 +115,4 @@ def GrabData(DataInds,HOST = "192.168.1.25",PORT_30003 = 30003):
     print ("Program finish")
 if __name__ =="__main__":
     while True:
-        print (GrabData([12]))
+        print (GrabData([12])) # 12 - TCP, 8 - Joint Orientation
