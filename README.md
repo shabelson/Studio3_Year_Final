@@ -29,6 +29,9 @@ d. Please add the external libraries that you use to the readme files.
 
 
 ##Code Bibliography ##
-[Ex-Machina] https://github.com/RobotExMachina/Machina-Bridge
-[Flex Sensor] http://www.ardumotive.com/how-to-use-a-flex-sensor-en.html
-[ArUco markers generator] https://chev.me/arucogen/
+[Ex-Machina] 
+https://github.com/RobotExMachina/Machina-Bridge
+[Flex Sensor] 
+http://www.ardumotive.com/how-to-use-a-flex-sensor-en.html
+[ArUco markers generator] 
+https://chev.me/arucogen/
