@@ -228,7 +228,7 @@ while True:
 		# Convert screen to world coordinates
 		x,y,z = openni2.convert_depth_to_world(depth_stream, cx, cy, avgDist)
 		z /= 10.0
-
+	
 		# Smooth the data 
 		if not bPrevData:
 			bPrevData = True
@@ -239,6 +239,7 @@ while True:
 		y = y*(1.0-easingParam) + py*easingParam
 		z = z*(1.0-easingParam) + pz*easingParam
 		bNewData = True
+		cv2.putText(img2, str(int(z)), (int(cx),int(cy)), cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 255),3)
 
 	# now, x,y,z are all in mm
 	# Send this over osc
@@ -257,7 +258,7 @@ while True:
 	
 	# Debug the image
 	if (bViewFeed):
-		cv2.imshow("Image", colorPix)
+		cv2.imshow("Image", img2)
 		cv2.waitKey(34)
 
 openni2.unload()

@@ -87,7 +87,6 @@ while True:
     colorPix = np.frombuffer(frame_data, dtype=np.uint8)
     colorPix.shape = (height, width, 3)
     colorPix = np.flip(colorPix, 2)
-    ret,thresh = cv2.threshold(grayPix, minIntensity, 255,cv2.THRESH_BINARY)
     img2 = None
     avgDist = np.average(depthPix)
     colorPix = np.array(colorPix)
@@ -101,9 +100,28 @@ while True:
     xs = []
     ys = []    
     pts = []
+
+    lmInds = [0,5,8]
     for i,lm in enumerate(lmList):
+        """
+        #for i in lmInds:
+        print (len(lmList),i)
+        try:
+            lm = lmList[i]
+        except:
+            continue
+        """
+        print (depthPix.shape,colorPix.shape,lm)
         
-        x,y,z = openni2.convert_depth_to_world(depth_stream,lm[1],lm[2],avgDist)
+        if lm[1]>=depthPix.shape[0]:
+            lm[1] = depthPix.shape[0]-2
+        if lm[2]>=depthPix.shape[1]:
+            lm[2]=depthPix.shape[1]-2
+
+        print (lm)
+        locz = depthPix[lm[1]][lm[2]]
+        print (locz)
+        x,y,z = openni2.convert_depth_to_world(depth_stream,lm[1],lm[2],locz)
         z /= 10.0
         if not bPrevData:
             bPrevData = True
@@ -121,7 +139,7 @@ while True:
         xs.append(lm[1])
         ys.append(lm[2])   
         zs.append(z)   
-        pts.append(",".join(map(str,[x,y,z])))       
+        pts.append(",".join(map(str,[lm[1],lm[2],locz])))       
         #client.publish("LM/%i"%(i),"%i:%f_%f_%f"%(i,px,py,pz))
     if len(xs)>0:
         midX = max(xs)
@@ -129,9 +147,7 @@ while True:
         midZ = sum(zs)/len(zs)
         print (midY,midX)
         cv2.putText(colorPix, str(int(midZ)), (midX,midY), cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 255),3)
-
-
-    client.publish("/LM","|".join(pts))
+        client.publish("/LM","|".join(pts))
     cTime = time.time()
     fps = 1 / (cTime - pTime)
     pTime = cTime
