@@ -15,9 +15,9 @@ count = 0
 home_status = 0
 program_run = 0
 def ByteUnpacHex(packet):
-     packet = packet.hex()
-     x = struct.unpack('!d', codecs.decode(packet,'hex'))[0]
-     return (x)
+    packet = packet.hex()
+    x = struct.unpack('!d', codecs.decode(packet,'hex'))[0]
+    return (x)
 
 
 while (True):
@@ -35,9 +35,8 @@ while (True):
             packet_5 = s.recv(48)
             packet_6 = s.recv(48)
             packet_7 = s.recv(48) 
+            #s.recv(240)
             packet_j1 = s.recv(8) #packet num 8 
-            
-            
             packet_j2 = s.recv(8) #packet num 8 
             packet_j3 = s.recv(8) #packet num 8 
             packet_j4 = s.recv(8) #packet num 8 
@@ -49,7 +48,9 @@ while (True):
             j4 = ByteUnpacHex(packet_j4)
             j5 = ByteUnpacHex(packet_j5)
             j6 = ByteUnpacHex(packet_j6)
+            
             jz = map(math.degrees,[j1,j2,j3,j4,j5,j6])
+            
             print ("_".join(map(str,jz)))
             packet_9 = s.recv(48)
             packet_10 = s.recv(48)
