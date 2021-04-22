@@ -21,8 +21,15 @@ d. Please add the external libraries that you use to the readme files.
 1. OpenMedia - python
 2. openCV - pyton
 3. openNI2 - python
-4. 
+4. Robot Ex Machina
+5. Mediapipe
+6. Primesense (openNI2)
+7. Astra - Orbbec Depth Camera
 
-## Bibliography ##
+
+
+##Code Bibliography ##
+
+https://github.com/RobotExMachina/Machina-Bridge
 
 http://www.ardumotive.com/how-to-use-a-flex-sensor-en.html
