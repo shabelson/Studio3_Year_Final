@@ -9,7 +9,7 @@ if defined _OLD_CODEPAGE (
 )
 
 
-set "VIRTUAL_ENV = C:\Users\shabe\OneDrive\Documents\GitHub\Studio3_Year_Final\Python\Venv\shahar\Studio3\"
+set "VIRTUAL_ENV = C:\Users\shabe\OneDrive\Documents\GitHub\Studio3_Year_Final\Python\Studio3\"
 if not defined PROMPT (
     set "PROMPT=$P$G"
 )

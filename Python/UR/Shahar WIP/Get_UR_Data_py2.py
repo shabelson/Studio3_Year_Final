@@ -20,8 +20,8 @@ while (True):
         s.connect((HOST, PORT_30003))
         time.sleep(1.00)
         print ""
-        packet_1 = s.recv(4)
-        packet_2 = s.recv(8)
+        packet_1 = s.recv(4) #Total Msg length in bytes
+        packet_2 = s.recv(8) 
         packet_3 = s.recv(48)
         packet_4 = s.recv(48)
         packet_5 = s.recv(48)
