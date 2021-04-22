@@ -1,6 +1,7 @@
 import cv2
 import mediapipe as mp
 import time
+##This is a new Note
 
 
 class handDetector():
