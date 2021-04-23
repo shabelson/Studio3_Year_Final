@@ -3,32 +3,40 @@
 
 #define SERVER_PORT 5000
 
-char ssid[] =   "MiFibra-C9FA" ;
-char pass[] =   "mrkKGDDF";
+//char ssid[] =   "MiFibra-C9FA" ;
+//char pass[] =   "mrkKGDDF";
+/*
+char ssid[] =   "IAAC-WIFI" ;
+char pass[] =   "enteriaac2013";
 
-int IN_PIN =  2;
 WiFiClient client;
 enum Protocol{
     PIN, 
     VALUE, 
     BUFFER_SIZE 
     };
+*/
+int IN_PIN =  2;
 
 void setup(){
+    //WiFi.mode(WIFI_STA)
+    //WiFi.begin(ssid, pass);
     Serial.begin(115200);
     pinMode(IN_PIN, INPUT);
-    WiFi.begin(ssid, pass);
- 
+    
+  /*
     while (WiFi.status() != WL_CONNECTED){
-      Serial.print(".");
-        delay(500);
+      Serial.print(WiFi.status());
+      Serial.print("   ");
+      Serial.println(WL_CONNECTED);
+    */    delay(500);
     }
-}
+
  
  
 void loop(){
     
-    if (!client.connect(WiFi.gatewayIP(), SERVER_PORT)){
+    /*if (!client.connect(WiFi.gatewayIP(), SERVER_PORT)){
         return;
     }
  
@@ -40,4 +48,8 @@ void loop(){
     client.write(buffer, Protocol::BUFFER_SIZE);
     client.flush();
     client.stop();
+    */
+    Serial.println(digitalRead(IN_PIN));
+
+    
 }

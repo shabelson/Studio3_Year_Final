@@ -13,16 +13,20 @@ PubSubClient MQTT_CLIENT;
 //const char  IP[] = "192.168.56.1"; //HOME
 //const char ssid[] ="MiFibra-B93B";// HOME
 //const char pswd[] =  "3brRyg9p";// HOME
-
+/*
 char  IP[] = "10.3.141.1"; //HOME
 char ssid[] ="Team2_ExZZu";// HOME
 char pswd[] =  "123456789";// HOME
+*/
 /*
 const char  IP[] = "10.3.141.1"; //HOME
 const char ssid[] ="Team2_ExZZu";// HOME
 const char pswd[] =  "123456789";// HOME
 */
 
+char ssid[] ="IAAC-WIFI";// HOME
+char pswd[] =  "enteriaac2013";// HOME
+char  IP[] = "10.3.141.1"; //HOME
 
 char tmp_str[7];
 static bool hasIoTHub = false;
