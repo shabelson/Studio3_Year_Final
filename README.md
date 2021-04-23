@@ -27,8 +27,10 @@ d. Please add the external libraries that you use to the readme files.
 7. Astra - Orbbec Depth Camera
 
 
+## Hardware Fix ##
+* Esp32 FireBeetle update * - https://github.com/espressif/arduino-esp32/commit/6e7cc5210dd210603f4e49cf677ccfa8e055b53
 
-##Code Bibliography ##
+## Code Bibliography ##
 
 [Ex-Machina] 
 https://github.com/RobotExMachina/Machina-Bridge
@@ -38,3 +40,5 @@ http://www.ardumotive.com/how-to-use-a-flex-sensor-en.html
 
 [ArUco markers generator] 
 https://chev.me/arucogen/
+
+
