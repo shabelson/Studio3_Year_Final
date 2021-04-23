@@ -103,14 +103,6 @@ while True:
 
     lmInds = [0,5,8]
     for i,lm in enumerate(lmList):
-        """
-        #for i in lmInds:
-        print (len(lmList),i)
-        try:
-            lm = lmList[i]
-        except:
-            continue
-        """
         print (depthPix.shape,colorPix.shape,lm)
         
         if lm[1]>=depthPix.shape[0]:
@@ -152,7 +144,6 @@ while True:
     fps = 1 / (cTime - pTime)
     pTime = cTime
     cv2.putText(colorPix, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 255),3)
-    
     cv2.imshow("1",depthPix)
     cv2.imshow("2",colorPix)
     cv2.waitKey(34)
