@@ -197,7 +197,7 @@ while True:
         Dic[8].insert(0,"JOINTS")
         outString =[str(counter)] + Dic[12]+Dic[8]+["\n"]
         outString = map(str,outString)
-        outMsg = "%i_%s"%(counter,outMsg)
+        outMsg = "%i_%s\n"%(counter,outMsg)
 
         outString = ",".join(outString)          
         cv2.imwrite("./MEDIAPIPE/EXP1-2d-MediaPipe-Astra/pics/d/%i_depth.jpg"%(counter),depthPix)
