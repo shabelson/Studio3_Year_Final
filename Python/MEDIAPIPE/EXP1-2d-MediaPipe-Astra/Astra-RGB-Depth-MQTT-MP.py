@@ -10,14 +10,14 @@ maxDepth = 3000
 bZeroMask = True
 nErosions = 3
 
-bAutoExposure = True
-exposure = 150
+bAutoExposure = False
+exposure = 1000
 
 # ======= Smoothing Parameters =======
 # How much smoothing (and latency) you want
 # 0 --> no smoothing, no latency
 # 0.9 --> lots of smoothing, lots of latency
-easingParam = 0.3
+easingParam = 0
 
 # Import modules of interest
 import cv2
@@ -36,6 +36,7 @@ import math
 import serial
 import re
 import URDataGrabber as ur
+import find_pink1
 """
 
 
@@ -90,9 +91,9 @@ dev.set_image_registration_mode(c_api.OniImageRegistrationMode.ONI_IMAGE_REGISTR
 # Set exposure settings
 if (color_stream.camera != None):
     color_stream.camera.set_auto_exposure(bAutoExposure)
-    #color_stream.camera.set_exposure(exposure)
+    color_stream.camera.set_exposure(exposure)
     # Wait for these settings to take effect
-    time.sleep(1)
+    time.sleep(10)
 
 # Main loop
 lastUpdateTime = time.time()
@@ -101,6 +102,7 @@ px = 0
 py = 0
 pz = 0
 detector = handDetector()
+pink = find_pink1.PinkDetector()
 while True:
     
     frame = depth_stream.read_frame()
@@ -118,7 +120,7 @@ while True:
     RGB_Save = np.array(colorPix)
     colorPix = detector.findHands(colorPix,draw = True)
     lmList= detector.findPosition(colorPix,draw =  True)
-    
+    pinkImg = pink.ImgaeProc(colorPix)
     
     
     zs = []
@@ -187,6 +189,7 @@ while True:
     cv2.putText(colorPix, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 255),3)
     cv2.imshow("1",depthPix)
     cv2.imshow("2",colorPix)
+    cv2.imshow("3",pinkImg)
     cv2.waitKey(34)
     
     if curBool ==1 :#and prevBool == 0:

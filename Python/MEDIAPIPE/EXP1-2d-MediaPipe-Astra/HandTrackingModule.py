@@ -4,7 +4,7 @@ import time
 
 
 class handDetector():
-    def __init__(self, mode=False, maxHands=2, detectionCon=0.5, trackCon=0.5):
+    def __init__(self, mode=False, maxHands=1, detectionCon=0.7, trackCon=0.3):
         # Create the object and those objects will have its own variable
         self.mode = mode
         self.maxHands = maxHands
@@ -46,6 +46,7 @@ class handDetector():
                     cv2.circle(img, (cx, cy), 5, (255, 0, 255), cv2.FILLED)
 
         return lmList
+
 
 
 def main():
