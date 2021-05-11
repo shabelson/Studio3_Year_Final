@@ -41,4 +41,7 @@ http://www.ardumotive.com/how-to-use-a-flex-sensor-en.html
 [ArUco markers generator] 
 https://chev.me/arucogen/
 
+[install opencv-bridge - ros msg to opencv]
+https://stackoverflow.com/questions/49221565/unable-to-use-cv-bridge-with-ros-kinetic-and-python3
+
 
