@@ -93,7 +93,7 @@ def GrabData(DataInds,HOST = "192.168.1.25",PORT_30003 = 30003):
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.settimeout(10)
             s.connect((HOST, PORT_30003))
-            #time.sleep(1.00)
+
             print ("")
             for bPack in outPacks:
                 
@@ -106,7 +106,7 @@ def GrabData(DataInds,HOST = "192.168.1.25",PORT_30003 = 30003):
                         OutDict.update({bPack[2]:[locPacket]})
             home_status = 1
             program_run = 0
-
+            print ("Data Grabbed")
         except socket.error as socketerror:
             s.close()
             print("Error: ", socketerror)
