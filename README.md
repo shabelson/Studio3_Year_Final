@@ -26,6 +26,11 @@ d. Please add the external libraries that you use to the readme files.
 6. Primesense (openNI2)
 7. Astra - Orbbec Depth Camera
 
+## Arduino Libraries ##
+1. https://pubsubclient.knolleary.net/
+2. Adafruit_Sensor
+3. Adafruit_BNO055
+
 
 ## Hardware Fix ##
 * Esp32 FireBeetle update * - https://github.com/espressif/arduino-esp32/commit/6e7cc5210dd210603f4e49cf677ccfa8e055b53
