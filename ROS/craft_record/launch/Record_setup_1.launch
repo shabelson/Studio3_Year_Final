@@ -1,0 +1,7 @@
+<launch>
+    <node pkg="craft_record" name="Arduino_clicker" type="RosArduinoClicker.py"/>
+    <node pkg="craft_record" name="LandMark_Grabber" type="GetLMS.py"/>
+    <node pkg="craft_record" name="Wracker_point" type="WebSocket_Tracker.py"/>
+    <node pkg="craft_record" name="Astra_Resender" type="Astra_pcl_dup.py"/>
+
+</launch>

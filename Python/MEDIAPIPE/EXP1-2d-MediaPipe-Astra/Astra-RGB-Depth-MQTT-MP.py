@@ -93,7 +93,7 @@ if (color_stream.camera != None):
     color_stream.camera.set_auto_exposure(bAutoExposure)
     color_stream.camera.set_exposure(exposure)
     # Wait for these settings to take effect
-    time.sleep(10)
+    time.sleep(2)
 
 # Main loop
 lastUpdateTime = time.time()
