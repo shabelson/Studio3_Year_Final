@@ -2,7 +2,7 @@
 
 
 
-int fsrPin = 0;     // the FSR and 10K pulldown are connected to a0
+int fsrPin = 15;     // the FSR and 10K pulldown are connected to a0
 int fsrReading;     // the analog reading from the FSR resistor divider
  
 void setup(void) {

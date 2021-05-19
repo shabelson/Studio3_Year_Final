@@ -20,7 +20,7 @@ class skeleton_finder():
         self.sub_rgbImg = rospy.Subscriber("/camera/rgb/image_rect_color",Image,callback=self.callback_rgbImg ,queue_size=1)
         self.sub_dImg = rospy.Subscriber("/camera/depth_registered/image",Image,callback=self.callback_dImg ,queue_size=1)
         self.pub_lmImg = rospy.Publisher("/ST3/lmImg",Image,queue_size=1)
-        self.pub_pts = rospy.Publisher("/ST3/pcl",PointCloud2,queue_size=1)
+        self.pub_pts = rospy.Publisher("/ST3/mp_pcl",PointCloud2,queue_size=1)
         self.lmm = lmm()
         self.ptField = [PointField('x', 0, PointField.INT32, 1),
           PointField('y', 4, PointField.INT32, 1),
@@ -51,8 +51,7 @@ class skeleton_finder():
             dRGB = cv.circle(dRGB,center,10,(150,150,150))
             print (type(pt[0]))
             outPts.append(newPt)
-
-        pc2 = point_cloud2.create_cloud(ros_data.header, self.ptField, outPts)
+        pc2 = point_cloud2.create_cloud_xyz32(ros_data.header, outPts)
         self.pub_pts.publish(pc2)
         cv.imshow("t",self.lmm.lmImg)
         cv.imshow('t2',dRGB)

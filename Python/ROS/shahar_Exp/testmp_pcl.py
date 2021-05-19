@@ -8,6 +8,7 @@ from sensor_msgs.msg import PointCloud2
 def pclfunc(ros_data):
     print (type(ros_data))
     print (list(point_cloud2.read_points(ros_data)))
+    
 
 
 if __name__ =="__main__":
