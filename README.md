@@ -49,4 +49,5 @@ https://chev.me/arucogen/
 [install opencv-bridge - ros msg to opencv]
 https://stackoverflow.com/questions/49221565/unable-to-use-cv-bridge-with-ros-kinetic-and-python3
 
-
+[Owl Plugin source code]
+https://github.com/mateuszzwierzycki/Owl/blob/3f99308ffe1eef41640d7fcf3ec5bf3df92b0ab8/Owl.Learning/Networks/Network.vb#L187
