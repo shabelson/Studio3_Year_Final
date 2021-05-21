@@ -12,8 +12,6 @@
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
 
 //Force Sensor
-int forcePin =  15;
-uint8_t forceRead;
 
 WiFiClient esp32client;
 PubSubClient MQTT_CLIENT;
@@ -57,9 +55,7 @@ void SendMsg(){
   
   sensors_event_t event;
   bno.getEvent(&event);
-  forceRead = analogRead(forcePin);
-  int button = analogRead(buttonPin);
-  
+
 
   //Serial.print("X: ");
   //Serial.print(event.orientation.x, 4);
@@ -71,21 +67,14 @@ void SendMsg(){
   //Serial.print(forceRead);
   //Serial.print("\tclick: ");
   //Serial.print(button);
-  //Serial.println("");
-  Serial.print(analogRead(forcePin));
-  Serial.print(digitalRead(forcePin));
-  Serial.print (forcePin);
+
   x = String(event.orientation.x);
   y = String(event.orientation.y);
   z = String(event.orientation.z);
-  f = String(forceRead);
-  c = String(button);
 
   x.toCharArray(X, x.length() + 1);
   y.toCharArray(Y, y.length() + 1);
   z.toCharArray(Z, z.length() + 1);
-  f.toCharArray(F, f.length() + 1);
-  c.toCharArray(C, c.length() + 1);
 
   
 
@@ -96,17 +85,11 @@ void SendMsg(){
   Serial.print(Y);
   Serial.print("\tZ: ");
   Serial.print(Z);
-  Serial.print("\tF: ");
-  Serial.print(forceRead);
-  Serial.print("\tclick: ");
-  Serial.print(button);
-  Serial.println("");
 
- MQTT_CLIENT.publish("/watch1/X",X);    
- MQTT_CLIENT.publish("/watch1/Y",Y);    
- MQTT_CLIENT.publish("/watch1/Z",Z);    
- MQTT_CLIENT.publish("/ToolF",F);    
- MQTT_CLIENT.publish("/ArdClick",C);    
+
+ MQTT_CLIENT.publish("/watch2/X",X);    
+ MQTT_CLIENT.publish("/watch2/Y",Y);    
+ MQTT_CLIENT.publish("/watch2/Z",Z);    
 
        
     }
@@ -132,7 +115,7 @@ void Connect(){
     while (!MQTT_CLIENT.connected()){
        MQTT_CLIENT.setClient(esp32client);
        MQTT_CLIENT.setServer(IP,1883);
-       MQTT_CLIENT.connect("esp_master_wrist");
+       MQTT_CLIENT.connect("esp_master_shoulder");
       Serial.println("MQTT trying to Connect");
       delay(1000);
   }
@@ -165,7 +148,7 @@ void setup() {
   Serial.begin(115200);
     Connect();
     BNO055_Init();
-    pinMode(forcePin,INPUT);
+ 
 
     Serial.print("Done Setup");
     
@@ -175,6 +158,6 @@ void setup() {
 void loop() {
  Connect();
  SendMsg();
- Serial.println(analogRead(forcePin));
+
 
 }

@@ -132,7 +132,7 @@ void Connect(){
     while (!MQTT_CLIENT.connected()){
        MQTT_CLIENT.setClient(esp32client);
        MQTT_CLIENT.setServer(IP,1883);
-       MQTT_CLIENT.connect("esp_master_wrist");
+       MQTT_CLIENT.connect("esp_master_elbow");
       Serial.println("MQTT trying to Connect");
       delay(1000);
   }
